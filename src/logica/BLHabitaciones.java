@@ -2,7 +2,7 @@ package logica;
 
 import datos.DALHabitacionesDobles;
 import datos.DALHabitacionesMatrimoniales;
-import datos.DALClientesHabituales;
+import datos.DALHabitacionesSimples;
 import entidades.HabitacionDoble;
 import entidades.HabitacionMatrimonial;
 import entidades.HabitacionSimple;
@@ -16,7 +16,7 @@ public class BLHabitaciones {
         boolean ocupada = false;
         if (codigo.length() <= 5) {
             habitacion = new HabitacionSimple(codigo, precioPorNoche, ocupada);
-            mensaje = DALClientesHabituales.escribirClienteHabitual(habitacion);
+            mensaje = DALHabitacionesSimples.escribirHabitacionSimple(habitacion);
         } else
             mensaje = "Número de caracteres no válido";
         return mensaje;
@@ -47,8 +47,8 @@ public class BLHabitaciones {
     }
     
     public static ArrayList<HabitacionSimple> getHabitacionesSimples() {
-        if (DALClientesHabituales.getNumeroHabitacionesSimples() != 0)
-            return DALClientesHabituales.getHabitacionesSimples();
+        if (DALHabitacionesSimples.getNumeroHabitacionesSimples() != 0)
+            return DALHabitacionesSimples.getHabitacionesSimples();
         return null;
     }
     
@@ -66,7 +66,7 @@ public class BLHabitaciones {
     
     public static String updatePrecioHBSimple(double precioPorNoche) {
         if (precioPorNoche > 0)
-            return DALClientesHabituales.actualizarPrecio(precioPorNoche);
+            return DALHabitacionesSimples.actualizarPrecio(precioPorNoche);
         return "Precio negativo o igual a 0";
     }
     
